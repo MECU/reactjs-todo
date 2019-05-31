@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class List extends React.Component {
   constructor(props) {
@@ -26,12 +27,20 @@ export class List extends React.Component {
               }}
             >
               {value.text}
-              <button data-id={value.key} onClick={this.onClickDeleteHandler}>
-                X
-              </button>
-              <button data-id={value.key} onClick={this.onClickDoneHandler}>
-                Checkmark
-              </button>
+              <a
+                className="button"
+                data-id={value.key}
+                onClick={this.onClickDeleteHandler}
+              >
+                <FontAwesomeIcon icon="trash" />
+              </a>
+              <a
+                className="button"
+                data-id={value.key}
+                onClick={this.onClickDoneHandler}
+              >
+                <FontAwesomeIcon icon="check" />
+              </a>
             </li>
           );
         })}

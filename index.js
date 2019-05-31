@@ -2,7 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { AddBox } from "./addbox";
 import { List } from "./list";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCheck, faUndo, faTrash } from "@fortawesome/free-solid-svg-icons";
+
 const uuidv1 = require("uuid/v1");
+
+library.add(faCheck, faUndo, faTrash);
 
 class App extends React.Component {
   constructor(props) {
