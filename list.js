@@ -7,7 +7,7 @@ export class List extends React.Component {
   }
 
   onClickHandler(e) {
-    this.props.removeTodo(Number.parseInt(e.currentTarget.dataset.id));
+    this.props.removeTodo(e.currentTarget.dataset.id);
   }
 
   render() {

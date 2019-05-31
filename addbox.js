@@ -8,6 +8,11 @@ export class AddBox extends React.Component {
 
   onClickHandler() {
     let addText = document.getElementById("addText");
+    if (addText.value === "") {
+      // Can't add blank
+      // TODO: Show error message
+      return;
+    }
     this.props.addTodo(addText.value);
     addText.value = "";
   }
