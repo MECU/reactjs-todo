@@ -6,8 +6,7 @@ export class AddBox extends React.Component {
     this.onClickHandler = this.onClickHandler.bind(this);
   }
 
-  onClickHandler(e) {
-    // console.log(e);
+  onClickHandler() {
     let addText = document.getElementById("addText");
     this.props.addTodo(addText.value);
     addText.value = "";

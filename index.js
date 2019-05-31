@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props);
 
     this.addTodo = this.addTodo.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
 
     this.state = {
       todos: [{ key: 0, text: "test" }]
@@ -15,10 +16,17 @@ class App extends React.Component {
   }
 
   addTodo(todo) {
-    console.log(todo);
     this.state.todos.push({ key: 1, text: todo });
     this.setState({
       todos: this.state.todos
+    });
+  }
+
+  removeTodo(todoKey) {
+    this.setState({
+      todos: this.state.todos.filter(el => {
+        return el.key !== todoKey;
+      })
     });
   }
 
@@ -26,7 +34,7 @@ class App extends React.Component {
     return (
       <div>
         <AddBox addTodo={this.addTodo} />
-        <List todos={this.state.todos} />
+        <List todos={this.state.todos} removeTodo={this.removeTodo} />
       </div>
     );
   }
