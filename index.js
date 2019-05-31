@@ -10,14 +10,19 @@ class App extends React.Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
+    this.markDone = this.markDone.bind(this);
 
     this.state = {
-      todos: [{ key: uuidv1(), text: "test" }]
+      todos: []
     };
   }
 
   addTodo(todo) {
-    this.state.todos.push({ key: uuidv1(), text: todo });
+    this.state.todos.push({
+      key: uuidv1(),
+      text: todo,
+      done: 0
+    });
     this.setState({
       todos: this.state.todos
     });
@@ -31,11 +36,26 @@ class App extends React.Component {
     });
   }
 
+  markDone(todoKey) {
+    this.setState({
+      todos: this.state.todos.map(el => {
+        if (el.key === todoKey) {
+          el.done = 1;
+        }
+        return el;
+      })
+    });
+  }
+
   render() {
     return (
       <div>
         <AddBox addTodo={this.addTodo} />
-        <List todos={this.state.todos} removeTodo={this.removeTodo} />
+        <List
+          todos={this.state.todos}
+          removeTodo={this.removeTodo}
+          markDone={this.markDone}
+        />
       </div>
     );
   }
